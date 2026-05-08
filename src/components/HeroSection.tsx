@@ -2,187 +2,106 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, ChevronDown, Shield, Star, Zap } from "lucide-react";
+import { Phone, ChevronDown, Shield, Star, MapPin } from "lucide-react";
 import { COMPANY } from "@/lib/constants";
 
 const STATS = [
   { value: "200+", label: "Realizacji" },
-  { value: "5★", label: "Ocena klientów" },
+  { value: "5★", label: "Ocena Google" },
   { value: "10+", label: "Lat doświadczenia" },
   { value: "100%", label: "Satysfakcji" },
 ];
 
-const BADGES = [
-  { icon: <Shield size={14} />, text: "Dojazd do klienta" },
-  { icon: <Star size={14} />, text: "Premium Detailing" },
-  { icon: <Zap size={14} />, text: "Polańczyk & Bieszczady" },
-];
-
 export default function HeroSection() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
-    const resize = () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; };
-    window.addEventListener("resize", resize);
-
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; red: boolean }[] = [];
-    for (let i = 0; i < 55; i++) {
-      particles.push({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35,
-        size: Math.random() * 2 + 0.5,
-        opacity: Math.random() * 0.35 + 0.1,
-        red: Math.random() > 0.55,
-      });
-    }
-
-    let raf: number;
-    const animate = () => {
-      ctx.clearRect(0, 0, w, h);
-      particles.forEach(p => {
-        p.x += p.vx; p.y += p.vy;
-        if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
-        if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.red
-          ? `rgba(192,57,43,${p.opacity})`
-          : `rgba(13,27,42,${p.opacity * 0.4})`;
-        ctx.fill();
-      });
-      raf = requestAnimationFrame(animate);
-    };
-    animate();
-    return () => { window.removeEventListener("resize", resize); cancelAnimationFrame(raf); };
-  }, []);
-
   return (
-    <section style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "stretch", overflow: "hidden" }}>
-      <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, zIndex: 1 }} />
+    <section style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
-      {/* LEFT – content (white) */}
-      <div style={{
-        flex: "0 0 55%", display: "flex", alignItems: "center",
-        background: "#ffffff",
-        position: "relative", zIndex: 2, paddingTop: "7rem", paddingBottom: "4rem", paddingLeft: "clamp(1.5rem, 6vw, 7rem)", paddingRight: "3rem",
-      }}>
-        {/* Red left accent */}
-        <div style={{ position: "absolute", left: 0, top: "15%", height: "70%", width: "4px", background: "linear-gradient(to bottom, transparent, #c0392b 30%, #c0392b 70%, transparent)", borderRadius: "0 2px 2px 0" }} />
+      {/* BG Image – full bleed, high contrast car */}
+      <div style={{ position: "absolute", inset: 0 }}>
+        <Image
+          src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1800&q=85"
+          alt="DM AutoSPA premium detailing Polańczyk Bieszczady"
+          fill priority
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+        />
+        {/* White overlay – heavier on left, fading right */}
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(95deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,0.6) 65%, rgba(255,255,255,0.15) 100%)" }} />
+      </div>
 
-        <div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginBottom: "2rem" }}>
-            {BADGES.map((b, i) => (
-              <span key={i} className="badge" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
-                {b.icon}{b.text}
-              </span>
-            ))}
-          </div>
+      {/* Decorative red vertical line */}
+      <div style={{ position: "absolute", left: "calc(clamp(1.5rem, 6vw, 7rem) - 1.5rem)", top: "15%", height: "70%", width: "3px", background: "linear-gradient(to bottom, transparent, #c0392b 20%, #c0392b 80%, transparent)", zIndex: 2 }} />
 
-          <div style={{ marginBottom: "0.5rem" }}>
-            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "0.25em", textTransform: "uppercase", color: "#c0392b" }}>Premium Auto Detailing</span>
-          </div>
+      {/* Content */}
+      <div className="container" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "8rem", paddingBottom: "6rem", maxWidth: 700 }}>
 
-          <h1 style={{ maxWidth: 560, marginBottom: "1.5rem", lineHeight: 1.05, color: "#0d1b2a" }}>
-            DM AutoSPA –{" "}
-            <span className="gold-gradient">Auto Detailing</span>{" "}
-            Polańczyk & Bieszczady
-          </h1>
+        {/* Location badge */}
+        <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(192,57,43,0.08)", border: "1px solid rgba(192,57,43,0.2)", borderRadius: "100px", padding: "0.35rem 1rem", marginBottom: "1.75rem", width: "fit-content" }}>
+          <MapPin size={13} style={{ color: "#c0392b" }} />
+          <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#c0392b" }}>Polańczyk · Bieszczady · Dojazd do klienta</span>
+        </div>
 
-          <h2 style={{ fontWeight: 400, fontSize: "clamp(1rem, 1.5vw, 1.15rem)", color: "#3b4b5e", maxWidth: 480, marginBottom: "2.5rem", fontFamily: "'Inter', sans-serif", lineHeight: 1.75 }}>
-            Powłoki ceramiczne, folia PPF i korekta lakieru – przyjeżdżamy do Ciebie na terenie całych Bieszczad.
-          </h2>
+        {/* H1 */}
+        <h1 style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", fontWeight: 700, lineHeight: 1.0, marginBottom: "1.5rem", color: "#0d1b2a", letterSpacing: "-0.02em" }}>
+          DM AutoSPA<br />
+          <span style={{ color: "#c0392b" }}>Auto Detailing</span><br />
+          <span style={{ fontSize: "0.65em", fontWeight: 500, color: "#3b4b5e", letterSpacing: 0 }}>z dojazdem do Ciebie</span>
+        </h1>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginBottom: "3.5rem" }}>
-            <a href={`tel:+48${COMPANY.contact.phone}`} className="btn-primary">
-              <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <Phone size={16} /> Zadzwoń: {COMPANY.contact.phoneDisplay}
-              </span>
-            </a>
-            <Link href="/uslugi" className="btn-outline">
-              <span>Zobacz usługi</span>
-            </Link>
-          </div>
+        {/* H2 */}
+        <p style={{ fontSize: "1.1rem", color: "#3b4b5e", maxWidth: 480, marginBottom: "2.5rem", lineHeight: 1.75, fontFamily: "'Inter', sans-serif" }}>
+          Powłoki ceramiczne, folia PPF i korekta lakieru w Twoim garażu – bez wychodzenia z domu. Obsługujemy cały region Bieszczad.
+        </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
-            {STATS.map((s, i) => (
-              <div key={i} style={{ borderLeft: "3px solid #c0392b", paddingLeft: "1rem" }}>
-                <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "2rem", fontWeight: 700, color: "#c0392b", lineHeight: 1 }}>{s.value}</p>
-                <p style={{ fontSize: "0.75rem", color: "#6b7a8d", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.2rem" }}>{s.label}</p>
-              </div>
-            ))}
-          </div>
+        {/* Badges */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginBottom: "2.5rem" }}>
+          {[
+            { icon: <Shield size={13} />, text: "Bezpłatna wycena" },
+            { icon: <Star size={13} />, text: "Certyfikowane powłoki" },
+            { icon: <MapPin size={13} />, text: "Dojazd gratis" },
+          ].map((b, i) => (
+            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0.875rem", background: "#ffffff", border: "1px solid rgba(13,27,42,0.12)", borderRadius: "100px", fontSize: "0.8rem", fontWeight: 600, color: "#0d1b2a", fontFamily: "'Rajdhani', sans-serif", letterSpacing: "0.05em", textTransform: "uppercase", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+              <span style={{ color: "#c0392b" }}>{b.icon}</span>{b.text}
+            </span>
+          ))}
+        </div>
+
+        {/* CTAs */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginBottom: "3.5rem" }}>
+          <a href={`tel:+48${COMPANY.contact.phone}`}
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", background: "#c0392b", color: "white", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.06em", textTransform: "uppercase", borderRadius: "6px", border: "none", cursor: "pointer", boxShadow: "0 4px 20px rgba(192,57,43,0.35)", transition: "all 0.3s" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 30px rgba(192,57,43,0.45)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(192,57,43,0.35)"; }}>
+            <Phone size={16} /> {COMPANY.contact.phoneDisplay}
+          </a>
+          <Link href="/uslugi"
+            style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", padding: "1rem 2rem", background: "transparent", color: "#0d1b2a", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "1rem", letterSpacing: "0.06em", textTransform: "uppercase", borderRadius: "6px", border: "2px solid #0d1b2a", transition: "all 0.3s" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = "#0d1b2a"; (e.currentTarget as HTMLElement).style.color = "white"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = "transparent"; (e.currentTarget as HTMLElement).style.color = "#0d1b2a"; }}>
+            Zobacz usługi
+          </Link>
         </div>
       </div>
 
-      {/* RIGHT – navy with car image */}
-      <div style={{
-        flex: "0 0 45%",
-        background: "linear-gradient(145deg, #0a1628 0%, #0d1b2a 60%, #162540 100%)",
-        position: "relative", overflow: "hidden",
-      }}>
-        {/* Glow effect */}
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "80%", height: "80%", background: "radial-gradient(ellipse at center, rgba(192,57,43,0.18) 0%, transparent 70%)", pointerEvents: "none" }} />
-
-        {/* Car image */}
-        <div style={{ position: "absolute", inset: 0 }}>
-          <Image
-            src="https://images.unsplash.com/photo-1616455579100-2ceaa4eb6d37?w=900&q=80"
-            alt="Premium auto detailing - DM AutoSPA Polańczyk Bieszczady"
-            fill
-            priority
-            style={{ objectFit: "cover", opacity: 0.35, mixBlendMode: "luminosity" }}
-          />
-        </div>
-
-        {/* Diagonal left edge overlay matching white bg */}
-        <div style={{ position: "absolute", left: -1, top: 0, bottom: 0, width: "80px", background: "linear-gradient(to right, white 0%, transparent 100%)", zIndex: 3 }} />
-
-        {/* Navy content */}
-        <div style={{ position: "relative", zIndex: 4, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "2rem 3rem 2rem 4rem" }}>
-          <div style={{ marginBottom: "2rem" }}>
-            <div style={{ width: 50, height: 2, background: "#c0392b", marginBottom: "1.5rem" }} />
-            <h3 style={{ color: "white", fontSize: "1.6rem", fontFamily: "'Rajdhani', sans-serif", marginBottom: "1rem", lineHeight: 1.2 }}>
-              Dlaczego DM AutoSPA?
-            </h3>
-            {[
-              "Wyjeżdżamy do Ciebie – brak kosztów dojazdu",
-              "Certyfikowane powłoki ceramiczne",
-              "Folia PPF z self-healing",
-              "Korekta lakieru 1 i 2-etapowa",
-              "Dokumentacja fotograficzna każdej realizacji",
-            ].map((item, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", marginBottom: "0.875rem" }}>
-                <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#c0392b", flexShrink: 0, marginTop: "0.45rem" }} />
-                <p style={{ color: "rgba(200,215,230,0.9)", fontSize: "0.9rem", lineHeight: 1.5 }}>{item}</p>
-              </div>
-            ))}
-          </div>
-
-          <div style={{ padding: "1.25rem", background: "rgba(192,57,43,0.12)", border: "1px solid rgba(192,57,43,0.3)", borderRadius: "10px" }}>
-            <p style={{ color: "#c0392b", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.8rem", letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Strefa obsługi</p>
-            <p style={{ color: "rgba(200,215,230,0.9)", fontSize: "0.875rem", lineHeight: 1.6 }}>Polańczyk, Lesko, Sanok, Solina, Ustrzyki Dolne i cały region Bieszczad</p>
-          </div>
+      {/* Stats bar – navy */}
+      <div style={{ position: "relative", zIndex: 3, background: "#0d1b2a", padding: "1.5rem 0" }}>
+        <div className="container" style={{ display: "flex", flexWrap: "wrap", gap: "0", justifyContent: "space-around" }}>
+          {STATS.map((s, i) => (
+            <div key={i} style={{ textAlign: "center", padding: "0 1.5rem", borderRight: i < STATS.length - 1 ? "1px solid rgba(255,255,255,0.1)" : "none" }}>
+              <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "2rem", fontWeight: 700, color: "#c0392b", lineHeight: 1 }}>{s.value}</p>
+              <p style={{ fontSize: "0.72rem", color: "rgba(200,215,230,0.7)", letterSpacing: "0.1em", textTransform: "uppercase", marginTop: "0.25rem" }}>{s.label}</p>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Scroll cue */}
-      <div style={{ position: "absolute", bottom: "2rem", left: "27%", transform: "translateX(-50%)", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", animation: "bounce 2s infinite" }}>
-        <span style={{ fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "#6b7a8d" }}>Przewiń</span>
+      <div style={{ position: "absolute", bottom: "6rem", right: "5%", zIndex: 4, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", animation: "bounce 2s infinite" }}>
+        <span style={{ fontSize: "0.65rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.8)", writingMode: "vertical-rl" }}>Przewiń</span>
         <ChevronDown size={18} style={{ color: "#c0392b" }} />
       </div>
 
       <style>{`
-        @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(-8px)} }
-        @media(max-width:768px){
-          section > div:first-of-type { flex: 0 0 100% !important; }
-          section > div:last-of-type { display: none !important; }
-        }
+        @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
       `}</style>
     </section>
   );
