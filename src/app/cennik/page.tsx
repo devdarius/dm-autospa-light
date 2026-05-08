@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function CennikPage() {
   return (
     <div style={{ paddingTop: "6rem" }}>
-      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, #0a0a0a, var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
         <div className="container">
           <span className="section-label">Transparentne ceny</span>
           <h1 style={{ marginBottom: "1rem" }}>
@@ -53,7 +53,7 @@ export default function CennikPage() {
       {/* Note + CTA */}
       <section style={{ padding: "3rem 0 5rem" }}>
         <div className="container">
-          <div style={{ background: "linear-gradient(135deg, rgba(160,120,48,0.1), rgba(8,8,8,0))", border: "1px solid var(--border-hover)", borderRadius: "var(--radius-lg)", padding: "3rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "2rem" }}>
+          <div style={{ background: "linear-gradient(135deg, rgba(192,57,43,0.06), rgba(13,27,42,0.04))", border: "1px solid var(--border-hover)", borderRadius: "var(--radius-lg)", padding: "3rem", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "2rem" }}>
             <div>
               <h3 style={{ marginBottom: "0.75rem" }}>Nie wiesz, czego potrzebujesz?</h3>
               <p style={{ color: "var(--text-secondary)", maxWidth: 460 }}>

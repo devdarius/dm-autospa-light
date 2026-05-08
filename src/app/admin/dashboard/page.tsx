@@ -89,7 +89,7 @@ export default function AdminDashboard() {
   const logout = async () => { await fetch("/api/admin/auth", { method: "DELETE" }); window.location.href = "/admin"; };
 
   const tabBtn = (t: "gallery" | "pricing", label: string, icon: React.ReactNode) => (
-    <button onClick={() => setTab(t)} style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 1.5rem", border: "none", borderRadius: "8px", cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.95rem", letterSpacing: "0.06em", background: tab === t ? "rgba(201,168,76,0.12)" : "transparent", color: tab === t ? "var(--gold)" : "var(--text-secondary)", borderBottom: tab === t ? "2px solid var(--gold)" : "2px solid transparent", transition: "all 0.2s" }}>
+    <button onClick={() => setTab(t)} style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.75rem 1.5rem", border: "none", borderRadius: "8px", cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.95rem", letterSpacing: "0.06em", background: tab === t ? "rgba(192,57,43,0.1)" : "transparent", color: tab === t ? "var(--gold)" : "var(--text-secondary)", borderBottom: tab === t ? "2px solid var(--gold)" : "2px solid transparent", transition: "all 0.2s" }}>
       {icon}{label}
     </button>
   );
@@ -97,7 +97,7 @@ export default function AdminDashboard() {
   return (
     <div style={{ minHeight: "100vh", background: "var(--bg-primary)", paddingTop: "5rem" }}>
       {/* Admin header */}
-      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, background: "rgba(8,8,8,0.97)", borderBottom: "1px solid var(--border)", backdropFilter: "blur(20px)", padding: "0.875rem 0" }}>
+      <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, background: "rgba(255,255,255,0.97)", borderBottom: "1px solid var(--border)", backdropFilter: "blur(20px)", padding: "0.875rem 0" }}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <h1 style={{ fontSize: "1.2rem" }}>🛠️ Panel Admina – <span className="gold-text">DM AutoSPA</span></h1>
           <button onClick={logout} style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.5rem 1rem", background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.3)", borderRadius: "6px", color: "#e74c3c", cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, fontSize: "0.875rem" }}>
@@ -232,7 +232,7 @@ export default function AdminDashboard() {
                           <td style={{ padding: "1rem 1.25rem", color: "var(--text-muted)", fontSize: "0.85rem" }}>{item.duration}</td>
                           <td style={{ padding: "1rem 1.25rem" }}>
                             <div style={{ display: "flex", gap: "0.5rem" }}>
-                              <button onClick={() => { setEditingId(item.id); setEditBuf({}); }} style={{ padding: "0.4rem 0.75rem", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)", borderRadius: "6px", color: "var(--gold)", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.8rem" }}><Edit2 size={13} />Edytuj</button>
+                              <button onClick={() => { setEditingId(item.id); setEditBuf({}); }} style={{ padding: "0.4rem 0.75rem", background: "rgba(192,57,43,0.08)", border: "1px solid rgba(192,57,43,0.25)", borderRadius: "6px", color: "var(--gold)", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.8rem" }}><Edit2 size={13} />Edytuj</button>
                               <button onClick={() => deletePricing(item.id)} style={{ padding: "0.4rem 0.75rem", background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.3)", borderRadius: "6px", color: "#e74c3c", cursor: "pointer", display: "flex", alignItems: "center", gap: "0.3rem", fontSize: "0.8rem" }}><Trash2 size={13} /></button>
                             </div>
                           </td>

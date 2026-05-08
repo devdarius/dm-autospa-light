@@ -54,8 +54,8 @@ export default function HeroSection() {
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         // czerwone lub niebieskawo-białe
         ctx.fillStyle = p.red
-          ? `rgba(192,57,43,${p.opacity})`
-          : `rgba(160,185,220,${p.opacity * 0.6})`;
+          ? `rgba(192,57,43,${p.opacity * 0.5})`
+          : `rgba(13,27,42,${p.opacity * 0.25})`;
         ctx.fill();
       });
       raf = requestAnimationFrame(animate);
@@ -73,16 +73,16 @@ export default function HeroSection() {
         alignItems: "center",
         overflow: "hidden",
         // Granatowy gradient – jak tło logo
-        background: "linear-gradient(145deg, #060c16 0%, #0a1628 45%, #0d1e35 75%, #08111f 100%)",
+        background: "linear-gradient(145deg, #f4f7f9 0%, #ffffff 45%, #f8f9fa 75%, #ffffff 100%)",
       }}
     >
       <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, zIndex: 0 }} />
 
       {/* Czerwona poświata centralna */}
-      <div style={{ position: "absolute", top: "38%", left: "50%", transform: "translate(-50%,-50%)", width: "60vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(192,57,43,0.08) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
+      <div style={{ position: "absolute", top: "38%", left: "50%", transform: "translate(-50%,-50%)", width: "60vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(192,57,43,0.05) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
 
-      {/* Granatowa poświata z lewej */}
-      <div style={{ position: "absolute", top: "20%", left: "-10%", width: "50vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(13,40,80,0.5) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
+      {/* Granatowa poświata z prawej */}
+      <div style={{ position: "absolute", top: "10%", right: "-5%", width: "40vw", height: "80vh", background: "radial-gradient(ellipse at center, rgba(13,27,42,0.04) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
 
       {/* Linia akcentowa lewa */}
       <div style={{ position: "absolute", left: 0, top: "20%", height: "60%", width: "3px", background: "linear-gradient(to bottom, transparent, #c0392b, transparent)", zIndex: 1 }} />

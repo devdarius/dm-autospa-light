@@ -50,7 +50,7 @@ export default function WhyUsSection() {
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
               {STEPS.map((step, i) => (
                 <div key={i} style={{ display: "flex", gap: "1.25rem", alignItems: "flex-start" }}>
-                  <div style={{ width: 48, height: 48, borderRadius: "50%", border: "2px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "rgba(201,168,76,0.05)" }}>
+                  <div style={{ width: 48, height: 48, borderRadius: "50%", border: "2px solid var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "rgba(192,57,43,0.06)" }}>
                     <span style={{ fontFamily: "'Rajdhani', sans-serif", fontWeight: 700, fontSize: "0.8rem", color: "var(--gold)" }}>{step.num}</span>
                   </div>
                   <div>
@@ -66,7 +66,7 @@ export default function WhyUsSection() {
       </section>
 
       {/* CTA Banner */}
-      <section style={{ padding: "4rem 0", background: "linear-gradient(135deg, #08111e, #0f1c2e)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0", background: "linear-gradient(135deg, var(--navy), #1a3050)", borderTop: "1px solid rgba(13,27,42,0.1)", borderBottom: "1px solid rgba(13,27,42,0.1)" }}>
         <div className="container" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2rem" }}>
           <div>
             <h2 style={{ marginBottom: "0.5rem" }}>Gotowy na <span className="gold-gradient">transformację</span> swojego auta?</h2>

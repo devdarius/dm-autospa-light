@@ -27,10 +27,10 @@ export default function Navbar() {
         transition: "all 0.3s cubic-bezier(0.4,0,0.2,1)",
         padding: scrolled ? "0.75rem 0" : "1.25rem 0",
         background: scrolled
-          ? "rgba(8,14,26,0.96)"
-          : "linear-gradient(to bottom, rgba(8,14,26,0.88), transparent)",
+          ? "rgba(255,255,255,0.97)"
+          : "linear-gradient(to bottom, rgba(255,255,255,0.92), transparent)",
         backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(192,57,43,0.18)" : "1px solid transparent",
+        borderBottom: scrolled ? "1px solid rgba(13,27,42,0.08)" : "1px solid transparent",
       }}
     >
       <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -104,7 +104,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: "rgba(8,14,26,0.98)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(192,57,43,0.18)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+        <div style={{ position: "absolute", top: "100%", left: 0, right: 0, background: "rgba(255,255,255,0.98)", backdropFilter: "blur(20px)", borderBottom: "1px solid rgba(13,27,42,0.08)", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
           {NAV_LINKS.map((link) => (
             <Link key={link.href} href={link.href}
               style={{ padding: "0.875rem 1rem", fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, fontSize: "1.1rem", letterSpacing: "0.1em", textTransform: "uppercase", color: pathname === link.href ? "#c0392b" : "var(--text-primary)", borderRadius: "6px", borderBottom: "1px solid rgba(192,57,43,0.12)" }}>

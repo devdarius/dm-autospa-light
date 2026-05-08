@@ -18,7 +18,7 @@ export default function KontaktPage() {
 
   return (
     <div style={{ paddingTop: "6rem" }}>
-      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, #0a0a0a, var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
         <div className="container">
           <span className="section-label">Skontaktuj się</span>
           <h1>Umów wizytę <span className="gold-gradient">DM AutoSPA</span></h1>
@@ -43,7 +43,7 @@ export default function KontaktPage() {
                   { icon: <Clock size={18} />, label: "Godziny pracy", value: `Pn–Pt: ${COMPANY.hours.weekdays}`, href: undefined },
                 ].map((item, i) => (
                   <div key={i} style={{ display: "flex", gap: "1rem", alignItems: "flex-start", paddingBottom: "1.25rem", marginBottom: "1.25rem", borderBottom: i < 3 ? "1px solid var(--border)" : "none" }}>
-                    <div style={{ width: 42, height: 42, borderRadius: "10px", background: "rgba(201,168,76,0.08)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--gold)" }}>
+                    <div style={{ width: 42, height: 42, borderRadius: "10px", background: "rgba(192,57,43,0.06)", border: "1px solid var(--border)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, color: "var(--gold)" }}>
                       {item.icon}
                     </div>
                     <div>
@@ -73,7 +73,7 @@ export default function KontaktPage() {
                 />
               </div>
 
-              <div style={{ padding: "1.25rem", background: "rgba(201,168,76,0.05)", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)" }}>
+              <div style={{ padding: "1.25rem", background: "rgba(192,57,43,0.04)", border: "1px solid var(--border)", borderRadius: "var(--radius-sm)" }}>
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", lineHeight: 1.7 }}>
                   📍 <strong style={{ color: "var(--gold)" }}>Obsługujemy</strong> cały region Bieszczad: Polańczyk, Lesko, Sanok, Ustrzyki Dolne, Solina i okolice.
                 </p>

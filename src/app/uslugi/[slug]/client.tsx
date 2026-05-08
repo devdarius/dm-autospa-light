@@ -64,7 +64,7 @@ export default function ServiceDetailPage({ params }: Props) {
     <div style={{ paddingTop: "6rem" }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
 
-      <section style={{ padding: "3rem 0 2rem", background: "linear-gradient(to bottom, #0a0a0a, var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "3rem 0 2rem", background: "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
         <div className="container">
           <Link href="/uslugi" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", color: "var(--text-muted)", fontSize: "0.875rem", marginBottom: "1.5rem" }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = "var(--gold)"}
@@ -136,7 +136,7 @@ export default function ServiceDetailPage({ params }: Props) {
                 </ul>
               </div>
 
-              <div style={{ background: "linear-gradient(135deg, rgba(160,120,48,0.15), rgba(201,168,76,0.08))", border: "1px solid var(--border-hover)", borderRadius: "var(--radius-md)", padding: "1.75rem" }}>
+              <div style={{ background: "linear-gradient(135deg, rgba(192,57,43,0.06), rgba(13,27,42,0.03))", border: "1px solid var(--border-hover)", borderRadius: "var(--radius-md)", padding: "1.75rem" }}>
                 <h3 style={{ fontSize: "1.1rem", marginBottom: "0.5rem" }}>Umów wycenę</h3>
                 <p style={{ color: "var(--text-secondary)", fontSize: "0.875rem", marginBottom: "1.5rem" }}>Bezpłatna wycena, dojazd do klienta, termin ustalamy indywidualnie.</p>
                 <a href={`tel:+48${COMPANY.contact.phone}`} className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>

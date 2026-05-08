@@ -26,7 +26,7 @@ export default function GalleryClient() {
   return (
     <div style={{ paddingTop: "6rem" }}>
       {/* Header */}
-      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, #0a0a0a, var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
         <div className="container">
           <span className="section-label">Nasze realizacje</span>
           <h1>Galeria <span className="gold-gradient">DM AutoSPA</span></h1>
@@ -38,7 +38,7 @@ export default function GalleryClient() {
       </section>
 
       {/* Filter */}
-      <section style={{ padding: "2rem 0", borderBottom: "1px solid var(--border)", position: "sticky", top: "70px", background: "rgba(8,8,8,0.95)", backdropFilter: "blur(20px)", zIndex: 100 }}>
+      <section style={{ padding: "2rem 0", borderBottom: "1px solid var(--border)", position: "sticky", top: "70px", background: "rgba(255,255,255,0.97)", backdropFilter: "blur(20px)", zIndex: 100 }}>
         <div className="container" style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
           {CATS.map((cat) => (
             <button key={cat} onClick={() => setActiveCat(cat)}
@@ -46,7 +46,7 @@ export default function GalleryClient() {
                 padding: "0.5rem 1.25rem",
                 borderRadius: "100px",
                 border: activecat === cat ? "1px solid var(--gold)" : "1px solid var(--border)",
-                background: activecat === cat ? "rgba(201,168,76,0.12)" : "transparent",
+                background: activecat === cat ? "rgba(192,57,43,0.08)" : "transparent",
                 color: activecat === cat ? "var(--gold)" : "var(--text-secondary)",
                 fontFamily: "'Rajdhani', sans-serif",
                 fontWeight: 600,

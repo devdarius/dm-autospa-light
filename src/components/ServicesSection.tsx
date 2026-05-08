@@ -41,7 +41,7 @@ export default function ServicesSection() {
                 <div style={{ fontSize: "2.5rem", marginBottom: "1.25rem" }}>{service.icon}</div>
 
                 {/* Number */}
-                <span style={{ position: "absolute", top: "1.5rem", right: "1.5rem", fontFamily: "'Rajdhani', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(201,168,76,0.06)", lineHeight: 1 }}>0{i + 1}</span>
+                <span style={{ position: "absolute", top: "1.5rem", right: "1.5rem", fontFamily: "'Rajdhani', sans-serif", fontSize: "3rem", fontWeight: 900, color: "rgba(192,57,43,0.05)", lineHeight: 1 }}>0{i + 1}</span>
 
                 <span className="badge" style={{ marginBottom: "1rem", alignSelf: "flex-start" }}>od {service.priceFrom.toLocaleString("pl-PL")} zł</span>
 

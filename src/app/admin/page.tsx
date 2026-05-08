@@ -32,7 +32,7 @@ export default function AdminLoginPage() {
     <div style={{ minHeight: "100vh", background: "var(--bg-primary)", display: "flex", alignItems: "center", justifyContent: "center", padding: "2rem" }}>
       <div style={{ width: "100%", maxWidth: 420 }}>
         <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-          <div style={{ width: 56, height: 56, borderRadius: "50%", background: "linear-gradient(135deg, #a07830, #c9a84c)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem", boxShadow: "0 0 30px rgba(201,168,76,0.3)" }}>
+          <div style={{ width: 56, height: 56, borderRadius: "50%", background: "linear-gradient(135deg, #0d1b2a, #c0392b)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 1rem", boxShadow: "0 0 30px rgba(192,57,43,0.25)" }}>
             <Sparkles size={24} color="#080808" />
           </div>
           <h1 style={{ fontSize: "1.6rem", marginBottom: "0.5rem" }}>Panel Admina</h1>

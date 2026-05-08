@@ -14,7 +14,7 @@ export default function UslugiPage() {
   return (
     <div style={{ paddingTop: "6rem" }}>
       {/* Page header */}
-      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, #0a0a0a, var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0 2rem", background: "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))", borderBottom: "1px solid var(--border)" }}>
         <div className="container">
           <span className="section-label">Nasza oferta</span>
           <h1 style={{ marginBottom: "1rem" }}>Usługi detailingowe<br /><span className="gold-gradient">z dojazdem do klienta</span></h1>
@@ -71,14 +71,14 @@ export default function UslugiPage() {
                   <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                     {service.features.map((f) => (
                       <li key={f} style={{ display: "flex", alignItems: "center", gap: "0.75rem", fontSize: "0.9rem", color: "var(--text-secondary)" }}>
-                        <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(201,168,76,0.1)", border: "1px solid rgba(201,168,76,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <span style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(192,57,43,0.08)", border: "1px solid rgba(192,57,43,0.2)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                           <Check size={12} style={{ color: "var(--gold)" }} />
                         </span>
                         {f}
                       </li>
                     ))}
                   </ul>
-                  <div style={{ marginTop: "1.5rem", padding: "1rem", background: "rgba(201,168,76,0.05)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                  <div style={{ marginTop: "1.5rem", padding: "1rem", background: "rgba(192,57,43,0.04)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
                     <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.85rem", color: "var(--text-muted)" }}>
                       <span>⏱ Czas realizacji: <strong style={{ color: "var(--text-secondary)" }}>{service.duration}</strong></span>
                       <span>📍 Z dojazdem</span>
