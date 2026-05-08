@@ -66,7 +66,7 @@ export default function WhyUsSection() {
       </section>
 
       {/* CTA Banner */}
-      <section style={{ padding: "4rem 0", background: "linear-gradient(135deg, #0d0900, #1a1100)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
+      <section style={{ padding: "4rem 0", background: "linear-gradient(135deg, #08111e, #0f1c2e)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
         <div className="container" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "2rem" }}>
           <div>
             <h2 style={{ marginBottom: "0.5rem" }}>Gotowy na <span className="gold-gradient">transformację</span> swojego auta?</h2>

@@ -31,9 +31,16 @@ export default function HeroSection() {
     const resize = () => { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; };
     window.addEventListener("resize", resize);
 
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number }[] = [];
-    for (let i = 0; i < 60; i++) {
-      particles.push({ x: Math.random() * w, y: Math.random() * h, vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4, size: Math.random() * 1.5 + 0.5, opacity: Math.random() * 0.5 + 0.1 });
+    // Mieszanka cząsteczek: czerwone + granatowo-białe
+    const particles: { x: number; y: number; vx: number; vy: number; size: number; opacity: number; red: boolean }[] = [];
+    for (let i = 0; i < 70; i++) {
+      particles.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+        size: Math.random() * 1.5 + 0.4,
+        opacity: Math.random() * 0.45 + 0.08,
+        red: Math.random() > 0.6, // 40% czerwone, 60% niebieskawe
+      });
     }
 
     let raf: number;
@@ -45,7 +52,10 @@ export default function HeroSection() {
         if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201,168,76,${p.opacity})`;
+        // czerwone lub niebieskawo-białe
+        ctx.fillStyle = p.red
+          ? `rgba(192,57,43,${p.opacity})`
+          : `rgba(160,185,220,${p.opacity * 0.6})`;
         ctx.fill();
       });
       raf = requestAnimationFrame(animate);
@@ -62,20 +72,23 @@ export default function HeroSection() {
         display: "flex",
         alignItems: "center",
         overflow: "hidden",
-        background: "linear-gradient(135deg, #080808 0%, #0a0a0a 50%, #060810 100%)",
+        // Granatowy gradient – jak tło logo
+        background: "linear-gradient(145deg, #060c16 0%, #0a1628 45%, #0d1e35 75%, #08111f 100%)",
       }}
     >
-      {/* Particle canvas */}
       <canvas ref={canvasRef} style={{ position: "absolute", inset: 0, zIndex: 0 }} />
 
-      {/* Radial glow center */}
-      <div style={{ position: "absolute", top: "40%", left: "50%", transform: "translate(-50%,-50%)", width: "70vw", height: "70vh", background: "radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
+      {/* Czerwona poświata centralna */}
+      <div style={{ position: "absolute", top: "38%", left: "50%", transform: "translate(-50%,-50%)", width: "60vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(192,57,43,0.08) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
 
-      {/* Left accent line */}
-      <div style={{ position: "absolute", left: 0, top: "20%", height: "60%", width: "3px", background: "linear-gradient(to bottom, transparent, var(--gold), transparent)", zIndex: 1 }} />
+      {/* Granatowa poświata z lewej */}
+      <div style={{ position: "absolute", top: "20%", left: "-10%", width: "50vw", height: "60vh", background: "radial-gradient(ellipse at center, rgba(13,40,80,0.5) 0%, transparent 70%)", zIndex: 0, pointerEvents: "none" }} />
+
+      {/* Linia akcentowa lewa */}
+      <div style={{ position: "absolute", left: 0, top: "20%", height: "60%", width: "3px", background: "linear-gradient(to bottom, transparent, #c0392b, transparent)", zIndex: 1 }} />
 
       <div className="container" style={{ position: "relative", zIndex: 2, paddingTop: "7rem", paddingBottom: "4rem" }}>
-        {/* Badge row */}
+        {/* Badges */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", marginBottom: "2rem" }}>
           {BADGES.map((b, i) => (
             <span key={i} className="badge" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
@@ -86,13 +99,13 @@ export default function HeroSection() {
 
         {/* H1 */}
         <h1 style={{ maxWidth: 780, marginBottom: "1.5rem", lineHeight: 1.1 }}>
-          <span style={{ display: "block", color: "var(--text-secondary)", fontSize: "0.6em", fontWeight: 400, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Premium Auto Detailing</span>
+          <span style={{ display: "block", color: "var(--text-muted)", fontSize: "0.6em", fontWeight: 400, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: "0.5rem" }}>Premium Auto Detailing</span>
           DM AutoSPA –{" "}
           <span className="gold-gradient">Auto Detailing</span>{" "}
           Polańczyk & Bieszczady
         </h1>
 
-        {/* Subtitle H2 */}
+        {/* H2 */}
         <h2 style={{ fontWeight: 400, fontSize: "clamp(1rem, 2vw, 1.3rem)", color: "var(--text-secondary)", maxWidth: 560, marginBottom: "2.5rem", fontFamily: "'Inter', sans-serif", lineHeight: 1.7 }}>
           Usługi detailingowe z dojazdem do klienta – powłoki ceramiczne,&nbsp;folia PPF i korekta lakieru w Twoim garażu.
         </h2>
@@ -101,8 +114,7 @@ export default function HeroSection() {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", marginBottom: "4rem" }}>
           <a href={`tel:+48${COMPANY.contact.phone}`} className="btn-primary">
             <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <Phone size={16} />
-              Zadzwoń: {COMPANY.contact.phoneDisplay}
+              <Phone size={16} /> Zadzwoń: {COMPANY.contact.phoneDisplay}
             </span>
           </a>
           <Link href="/uslugi" className="btn-outline">
@@ -113,8 +125,8 @@ export default function HeroSection() {
         {/* Stats */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: "2rem" }}>
           {STATS.map((s, i) => (
-            <div key={i} style={{ borderLeft: "2px solid var(--gold)", paddingLeft: "1rem" }}>
-              <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>{s.value}</p>
+            <div key={i} style={{ borderLeft: "2px solid #c0392b", paddingLeft: "1rem" }}>
+              <p style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "2rem", fontWeight: 700, color: "#c0392b", lineHeight: 1 }}>{s.value}</p>
               <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", letterSpacing: "0.08em", textTransform: "uppercase", marginTop: "0.25rem" }}>{s.label}</p>
             </div>
           ))}
@@ -124,7 +136,7 @@ export default function HeroSection() {
       {/* Scroll cue */}
       <div style={{ position: "absolute", bottom: "2rem", left: "50%", transform: "translateX(-50%)", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem", animation: "bounce 2s infinite" }}>
         <span style={{ fontSize: "0.7rem", letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--text-muted)" }}>Przewiń</span>
-        <ChevronDown size={18} style={{ color: "var(--gold)" }} />
+        <ChevronDown size={18} style={{ color: "#c0392b" }} />
       </div>
 
       <style>{`

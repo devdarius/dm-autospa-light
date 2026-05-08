@@ -12,13 +12,18 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "1.25rem" }}>
-              <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #a07830, #c9a84c)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Sparkles size={16} color="#080808" />
-              </div>
-              <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.25rem", fontWeight: 700, letterSpacing: "0.04em" }}>
-                DM <span style={{ color: "var(--gold)" }}>Auto</span>SPA
-              </span>
-            </Link>
+            <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg, #0d1b2a, #1a3050)", border: "2px solid #c0392b", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 12px rgba(192,57,43,0.3)" }}>
+              <svg width="20" height="12" viewBox="0 0 48 22" fill="none">
+                <path d="M4 16 C8 16, 10 8, 20 7 C28 6, 36 6, 40 8 C44 10, 45 14, 45 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" fill="none"/>
+                <line x1="3" y1="16" x2="46" y2="16" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="12" cy="17.5" r="3" stroke="white" strokeWidth="1.5" fill="none"/>
+                <circle cx="36" cy="17.5" r="3" stroke="white" strokeWidth="1.5" fill="none"/>
+              </svg>
+            </div>
+            <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "1.25rem", fontWeight: 700, letterSpacing: "0.04em" }}>
+              DM <span style={{ color: "#c0392b" }}>Auto</span>SPA
+            </span>
+          </Link>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", lineHeight: 1.7, maxWidth: 260 }}>
               Premium auto detailing z dojazdem do klienta w Polańczyku i Bieszczadach. Powłoki ceramiczne, folia PPF, korekta lakieru.
             </p>
