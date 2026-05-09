@@ -19,10 +19,10 @@ export default function HeroSection() {
       {/* BG Image – full bleed, high contrast car */}
       <div style={{ position: "absolute", inset: 0 }}>
         <Image
-          src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1800&q=85"
+          src="/hero-bg.jpg"
           alt="DM AutoSPA premium detailing Polańczyk Bieszczady"
           fill priority
-          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
         {/* White overlay – heavier on left, fading right */}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(95deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,0.6) 65%, rgba(255,255,255,0.15) 100%)" }} />
