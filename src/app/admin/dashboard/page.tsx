@@ -2,7 +2,7 @@
 export const dynamic = "force-dynamic";
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { Upload, Trash2, Plus, Edit2, Save, X, LogOut, Image as ImageIcon, DollarSign } from "lucide-react";
+import { Upload, Trash2, Plus, Edit2, Save, X, LogOut, Image as ImageIcon, DollarSign, Settings, CheckCircle } from "lucide-react";
 
 const ADMIN_KEY = "dmautospa2025";
 const CATS = ["Powłoki ceramiczne", "Folia PPF", "Korekta lakieru"];
@@ -99,7 +99,7 @@ export default function AdminDashboard() {
       {/* Admin header */}
       <div style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 200, background: "rgba(255,255,255,0.97)", borderBottom: "1px solid var(--border)", backdropFilter: "blur(20px)", padding: "0.875rem 0" }}>
         <div className="container" style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <h1 style={{ fontSize: "1.2rem" }}>🛠️ Panel Admina – <span className="gold-text">DM AutoSPA</span></h1>
+          <h1 style={{ fontSize: "1.2rem", display: "flex", alignItems: "center", gap: "0.5rem" }}><Settings size={20} style={{ color: "var(--gold)" }} /> Panel Admina – <span className="gold-text">DM AutoSPA</span></h1>
           <button onClick={logout} style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.5rem 1rem", background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.3)", borderRadius: "6px", color: "#e74c3c", cursor: "pointer", fontFamily: "'Rajdhani', sans-serif", fontWeight: 600, fontSize: "0.875rem" }}>
             <LogOut size={14} /> Wyloguj
           </button>
@@ -120,16 +120,16 @@ export default function AdminDashboard() {
             <div className="card" style={{ marginBottom: "2rem", position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, var(--gold-dark), var(--gold))" }} />
               <h3 style={{ marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.5rem" }}><Upload size={18} style={{ color: "var(--gold)" }} /> Dodaj nowe zdjęcie</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr auto", gap: "1rem", alignItems: "end" }}>
-                <div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "flex-end" }}>
+                <div style={{ flex: "1 1 200px" }}>
                   <label className="form-label">Zdjęcie (JPG/PNG/WebP)</label>
                   <input ref={fileRef} type="file" accept="image/*" className="form-input" style={{ cursor: "pointer" }} />
                 </div>
-                <div>
+                <div style={{ flex: "1 1 250px" }}>
                   <label className="form-label">Opis ALT (SEO)</label>
                   <input className="form-input" value={newAlt} onChange={e => setNewAlt(e.target.value)} placeholder="Powłoka ceramiczna na [model] – DM AutoSPA" />
                 </div>
-                <div>
+                <div style={{ flex: "1 1 200px" }}>
                   <label className="form-label">Kategoria</label>
                   <select className="form-input" value={newCat} onChange={e => setNewCat(e.target.value)}>
                     {CATS.map(c => <option key={c}>{c}</option>)}
@@ -141,7 +141,7 @@ export default function AdminDashboard() {
                   </span>
                 </button>
               </div>
-              <p style={{ marginTop: "0.75rem", fontSize: "0.8rem", color: "var(--text-muted)" }}>✅ Zdjęcia są automatycznie kompresowane do formatu WebP (jakość 82%, max 1200px)</p>
+              <p style={{ marginTop: "0.75rem", fontSize: "0.8rem", color: "var(--text-muted)", display: "flex", alignItems: "center", gap: "0.4rem" }}><CheckCircle size={14} style={{ color: "#27ae60" }} /> Zdjęcia są automatycznie kompresowane do formatu WebP (jakość 82%, max 1200px)</p>
             </div>
 
             {/* Gallery grid */}
@@ -173,22 +173,22 @@ export default function AdminDashboard() {
             <div className="card" style={{ marginBottom: "2rem", position: "relative", overflow: "hidden" }}>
               <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, var(--gold-dark), var(--gold))" }} />
               <h3 style={{ marginBottom: "1.25rem", display: "flex", alignItems: "center", gap: "0.5rem" }}><Plus size={18} style={{ color: "var(--gold)" }} /> Dodaj pozycję cennika</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr 1fr auto", gap: "1rem", alignItems: "end" }}>
-                <div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", alignItems: "flex-end" }}>
+                <div style={{ flex: "1 1 200px" }}>
                   <label className="form-label">Kategoria</label>
                   <select className="form-input" value={newPrice.category} onChange={e => setNewPrice({ ...newPrice, category: e.target.value })}>
                     {CATS.map(c => <option key={c}>{c}</option>)}
                   </select>
                 </div>
-                <div>
+                <div style={{ flex: "2 1 250px" }}>
                   <label className="form-label">Nazwa usługi</label>
                   <input className="form-input" value={newPrice.name} onChange={e => setNewPrice({ ...newPrice, name: e.target.value })} placeholder="Np. Powłoka ceramiczna 3 lata" />
                 </div>
-                <div>
+                <div style={{ flex: "1 1 120px" }}>
                   <label className="form-label">Cena</label>
                   <input className="form-input" value={newPrice.price} onChange={e => setNewPrice({ ...newPrice, price: e.target.value })} placeholder="od 1500 zł" />
                 </div>
-                <div>
+                <div style={{ flex: "1 1 120px" }}>
                   <label className="form-label">Czas</label>
                   <input className="form-input" value={newPrice.duration} onChange={e => setNewPrice({ ...newPrice, duration: e.target.value })} placeholder="1–2 dni" />
                 </div>
@@ -199,7 +199,7 @@ export default function AdminDashboard() {
             </div>
 
             {/* Pricing table */}
-            <div className="card" style={{ overflow: "hidden", padding: 0 }}>
+            <div className="card" style={{ overflowX: "auto", padding: 0 }}>
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead>
                   <tr style={{ background: "var(--bg-secondary)", borderBottom: "1px solid var(--border)" }}>

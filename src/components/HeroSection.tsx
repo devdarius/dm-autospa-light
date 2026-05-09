@@ -7,7 +7,7 @@ import { COMPANY } from "@/lib/constants";
 
 const STATS = [
   { value: "200+", label: "Realizacji" },
-  { value: "5★", label: "Ocena Google" },
+  { value: <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>5<Star size={26} fill="currentColor" style={{ marginLeft: "2px", marginBottom: "3px" }} /></span>, label: "Ocena Google" },
   { value: "10+", label: "Lat doświadczenia" },
   { value: "100%", label: "Satysfakcji" },
 ];
@@ -32,12 +32,11 @@ export default function HeroSection() {
       <div style={{ position: "absolute", left: "calc(clamp(1.5rem, 6vw, 7rem) - 1.5rem)", top: "15%", height: "70%", width: "3px", background: "linear-gradient(to bottom, transparent, #c0392b 20%, #c0392b 80%, transparent)", zIndex: 2 }} />
 
       {/* Content */}
-      <div className="container" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "8rem", paddingBottom: "6rem", maxWidth: 700 }}>
+      <div className="container" style={{ position: "relative", zIndex: 3, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "5rem", paddingBottom: "2rem", maxWidth: 700 }}>
 
-        {/* Location badge */}
-        <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "rgba(192,57,43,0.08)", border: "1px solid rgba(192,57,43,0.2)", borderRadius: "100px", padding: "0.35rem 1rem", marginBottom: "1.75rem", width: "fit-content" }}>
-          <MapPin size={13} style={{ color: "#c0392b" }} />
-          <span style={{ fontFamily: "'Rajdhani', sans-serif", fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "#c0392b" }}>Polańczyk · Bieszczady · Dojazd do klienta</span>
+        {/* Location live-dot badge */}
+        <div style={{ marginBottom: "1.75rem" }}>
+          <span className="live-dot">Polańczyk · Bieszczady · Dojazd do klienta</span>
         </div>
 
         {/* H1 */}
@@ -52,14 +51,14 @@ export default function HeroSection() {
           Powłoki ceramiczne, folia PPF i korekta lakieru w Twoim garażu – bez wychodzenia z domu. Obsługujemy cały region Bieszczad.
         </p>
 
-        {/* Badges */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginBottom: "2.5rem" }}>
+        {/* Feature badges */}
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", marginBottom: "2.5rem" }}>
           {[
             { icon: <Shield size={13} />, text: "Bezpłatna wycena" },
             { icon: <Star size={13} />, text: "Certyfikowane powłoki" },
             { icon: <MapPin size={13} />, text: "Dojazd gratis" },
           ].map((b, i) => (
-            <span key={i} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", padding: "0.35rem 0.875rem", background: "#ffffff", border: "1px solid rgba(13,27,42,0.12)", borderRadius: "100px", fontSize: "0.8rem", fontWeight: 600, color: "#0d1b2a", fontFamily: "'Rajdhani', sans-serif", letterSpacing: "0.05em", textTransform: "uppercase", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+            <span key={i} className="badge" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
               <span style={{ color: "#c0392b" }}>{b.icon}</span>{b.text}
             </span>
           ))}
